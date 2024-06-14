@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="liste-message">
+        <div class="message">
+            <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRls5vfL2feg44afSnF6H2fS77qPl0V2phQg&s" />
+            <div class="partie-message">
+                <div class="utilisateur">Tom SAWYER</div>
+                <p class="contenu">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos atque
+                    iusto dolorem consequatur error! Itaque, nobis consequuntur veritatis
+                    quibusdam sed illum, inventore officiis, et reprehenderit dicta dolor
+                    earum dolorum laborum.
+                </p>
+            </div>
+        </div>
+        <!-- @for (message of listeMessage; track message._id) { -->
+        <div *ngFor="let message of listeMessage; trackBy: trackById" class="message">
+            <img *ngIf="message._id_utilisateur" class="avatar" src="{{message._id_utilisateur.urlAvatar}}" />
+            <div class="partie-message">
+                <div class="utilisateur" *ngIf="message._id_utilisateur">
+                    {{message._id_utilisateur.prenom}} {{message._id_utilisateur.nom}}
+                </div>
+                <p class="contenu">{{message.contenu}}</p>
+            </div>
+        </div>
+    </div>
+    <form class="formulaire" [formGroup]="formulaire" (ngSubmit)="onMessageSubmit()">
+        <div class="message-box">
+            <mat-form-field class="send-message">
+                <mat-label>Ecrivez votre message</mat-label>
+                <textarea matInput formControlName="contenu" placeholder="Ex. Salut, comment vas-tu ?"></textarea>
+                <button type="submit" mat-flat-button color="primary">
+                    Envoyer
+                </button>
+            </mat-form-field>
+            <input type="hidden" formControlName="_id_utilisateur">
+        </div>
+    </form>
+
+    <app-liste-utilisateurs></app-liste-utilisateurs>
+</div>

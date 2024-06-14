@@ -1,0 +1,13 @@
+.formulaire {
+  width: 500px;
+}
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  margin: 4em;
+
+  > *:not(:first-child) {
+    margin-top: 1em;
+  }
+}

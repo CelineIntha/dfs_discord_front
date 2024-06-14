@@ -1,0 +1,34 @@
+<main>
+  <aside>
+    <div class="liste-serveur">
+      <div class="serveur" routerLink="/ajout-serveur" matTooltip="Créer ou rejoindre un nouveau serveur"
+        matTooltipPosition="right">
+        <mat-icon fontIcon="add_circle"></mat-icon>
+      </div>
+
+      @for (serveur of listeServeur; track serveur._id) {
+
+      <div class="serveur" [matTooltip]="serveur.nom" matTooltipPosition="right" (click)="afficherSalon(serveur._id)">
+        <img [attr.src]="serveur.urlLogo" [attr.data-id]="serveur._id" />
+      </div>
+
+      }
+    </div>
+    <div class="info-profil">
+      <img class="avatar"
+        src="https://play-lh.googleusercontent.com/0goocG7RJZDZ41ShfBPl-h7ctwHKHjqzn4nSImyL8_RWyXqeYNKw-CdGAKhgPGZG5Es" />
+      <span>John DOE</span>
+      <mat-icon class="bouton-profil" fontIcon="settings" routerLink="/profil"></mat-icon>
+    </div>
+  </aside>
+
+  @if (salonVisible && serveurSelectionneId)  {
+  <div>
+    <app-salon [serveurId]="serveurSelectionneId"></app-salon>
+  </div>
+  }
+
+  @else if (!salonVisible && !serveurSelectionneId)  {
+  <h3>Bienvenue</h3>
+}
+</main>

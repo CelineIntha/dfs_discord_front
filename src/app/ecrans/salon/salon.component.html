@@ -1,0 +1,15 @@
+<main>
+    <aside>
+        <div class="liste-serveur">
+            <button mat-flat-button color="primary" [routerLink]="['/ajout-salon']" [queryParams]="{ serveurId: serveurId }"> Ajouter un salon </button>
+            @for (salon of listeSalon; track salon._id) {
+            <div class="serveur" (click)="afficherMessageBySalon(salon._id)">
+                <h6>{{salon.nom}}</h6>
+            </div>
+            }
+        </div>
+    </aside>
+    @if (messageVisible == true) {
+    <app-message [salonId]="salonSelectionneId"></app-message>
+    }
+</main>

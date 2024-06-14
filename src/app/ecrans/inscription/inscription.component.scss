@@ -1,0 +1,18 @@
+.formulaire {
+  width: 500px;
+
+  app-rule {
+    margin-top: 0;
+  }
+}
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  margin: 4em;
+
+  > *:not(:first-child) {
+    margin-top: 1em;
+  }
+}

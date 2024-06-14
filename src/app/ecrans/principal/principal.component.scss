@@ -1,0 +1,93 @@
+main {
+  display: flex;
+  height: 100vh;
+
+  h3 {
+    margin-top: 1em;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+
+    .liste-serveur {
+      width: 70px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      border-right: 1px solid #333;
+
+      .serveur {
+        mat-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 50px;
+          color: #31c823;
+        }
+
+        img {
+          margin: 0.1em 0 0.1em 0;
+          border-radius: 50%;
+          border: 1px solid #333;
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+        }
+
+        img:hover {
+          cursor: pointer;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .info-profil {
+      display: flex;
+
+      .avatar {
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        object-fit: cover;
+        margin-right: 0.5em;
+      }
+
+      .bouton-profil {
+        margin-left: 0.5em;
+      }
+    }
+  }
+
+  .liste-message {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 5em;
+    margin-top: 5em;
+
+    .message {
+      display: flex;
+      margin: 1em;
+      border-bottom: 1px solid #585858;
+
+      .avatar {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin-right: 1em;
+      }
+
+      .partie-message {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .utilisateur {
+          color: grey;
+        }
+      }
+    }
+  }
+}
