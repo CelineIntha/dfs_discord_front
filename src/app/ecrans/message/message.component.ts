@@ -33,14 +33,12 @@ import { ListeUtilisateursComponent } from '../liste-utilisateurs/liste-utilisat
 export class MessageComponent implements OnChanges {
   @Input() salonId: string | null = null;
   listeMessage: Message[] = [];
-  formBuilder: FormBuilder = inject(FormBuilder);
-  route: ActivatedRoute = inject(ActivatedRoute);
-  router: Router = inject(Router);
-  snackBar: MatSnackBar = inject(MatSnackBar);
   formulaire: FormGroup;
   userId: string | null = null;
+  usersList: Utilisateur[] = []; 
+  currentServeurId: string = ''; 
 
-  constructor(private http: HttpClient, formBuilder: FormBuilder) { 
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private route: ActivatedRoute, private snackBar: MatSnackBar) { 
     this.formulaire = this.formBuilder.group({
       contenu: ['', [Validators.required]],
       _id_utilisateur: [`${this.userId}`, Validators.required],
@@ -70,6 +68,24 @@ export class MessageComponent implements OnChanges {
           }
         );
     }
+  }
+
+  blockUser(userId: string) {
+    if (!this.currentServeurId) {
+      console.error('currentServeurId is not set.');
+      return;
+    }
+
+    const url = `http://localhost:3000/utilisateur/block/${this.currentServeurId}/${userId}`;
+    this.http.post(url, {})
+      .subscribe(
+        () => {
+          console.log(`Utilisateur avec ID ${userId} bloqué avec succès.`);
+        },
+        error => {
+          console.error(`Erreur lors du blocage de l'utilisateur avec ID ${userId}:`, error);
+        }
+      );
   }
 
   fetchMessages() {

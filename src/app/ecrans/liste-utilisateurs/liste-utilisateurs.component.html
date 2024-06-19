@@ -1,3 +1,13 @@
 <div class="user-list">
-    <p>liste-utilisateurs works!</p>
-</div>
+    <div class="header">
+      <h2>Membres</h2>
+      <h3><span class="admin-info">Administrateur :</span></h3>
+    </div>
+  
+    <div *ngFor="let user of users" class="user-information">
+      <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRls5vfL2feg44afSnF6H2fS77qPl0V2phQg&s" />
+      <div class="username">{{ user.prenom }} {{ user.nom }}</div>
+      <button class="block-user" (click)="blockUser(user._id)">Bloquer</button>
+    </div>
+  </div>
+  

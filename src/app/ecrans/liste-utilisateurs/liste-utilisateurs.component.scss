@@ -1,5 +1,45 @@
 .user-list {
     border-left: 1px solid #333;
-    padding-left: 10px;
     height: 100vh;
+    
+    .header h2 {
+        font-size: 18px;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .header h3 {
+        font-size: 16px;
+        text-align: center;
+        margin: -1em 1em -0.5em 1em;
+    }
+
+    .admin-info {
+        color: rgb(30, 231, 231);
+    }
+
+    .user-information {
+        border-top: 1px solid #333;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 0.5em;
+        }
+
+        .block-user {
+            margin-left: 0.2em;
+        }
+
+        .block-user:hover {
+            cursor: pointer;
+            color: rgb(240, 82, 82);
+        }
+    }
 }
